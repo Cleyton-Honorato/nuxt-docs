@@ -44,27 +44,13 @@ defineEmits(['click']);
 </script>
 
 <style scoped lang="scss">
-@use '~/styles/variables' as vars;
+@use '~/styles/buttons';
 
 .secondary-button {
-  font-family: 'Cormorant', serif;
-  position: relative;
+  @extend %button-base;
   border-bottom: 1px solid #FFF7DF;
   border-top: 1px solid #FFF7DF;
-  cursor: pointer;
-  padding: 0;
-  background: transparent;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease, border-color 0.2s ease;
-  max-width: 100%;
   box-shadow: 0 0 0 rgba(255, 247, 223, 0);
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
 
   &:hover {
     border-bottom: 1px solid #FFF7DF;
@@ -85,20 +71,9 @@ defineEmits(['click']);
     }
   }
 
-  &:active {
-    .secondary-button__container {
-      transform: scale(0.99);
-      transition: transform 0.1s ease;
-    }
-  }
-
   // Block
   &--block {
-    width: 100%;
-
-    .secondary-button__container {
-      width: 100%;
-    }
+    @extend %button-block;
   }
 
   // Variant Vintage
@@ -118,44 +93,15 @@ defineEmits(['click']);
   }
 
   &__container {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    border-radius: 0;
-    transform-origin: center;
-    transition: transform 0.35s ease-out;
-    overflow: visible;
+    @extend %button-container;
   }
 
   &__content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 11px 17px;
-    font-size: 1.1rem;
-    z-index: 1;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    transition: all 0.35s ease-out;
-    background-clip: padding-box;
+    @extend %button-content;
   }
 
   &__diamond {
-    position: absolute;
-    transform: rotate(0deg);
-    z-index: 2;
-    transition: transform 0.35s ease-out;
-    width: 14px;
-    height: 14px;
-    pointer-events: none;
-
+    @extend %button-diamond;
     &--top {
       left: 50%;
       margin-left: -7px;
@@ -172,18 +118,13 @@ defineEmits(['click']);
   }
 
   &__edge {
-    position: absolute;
-    top: 0; 
-    height: 100%; 
-    z-index: 1;
-    transition: transform 0.35s ease-out;
-    pointer-events: none;
-    
+    @extend %button-edge;
+
     &--left {
       left: 0;
       transform: translateX(-90%);
     }
-    
+
     &--right {
       right: 0;
       transform: translateX(90%);
@@ -209,7 +150,7 @@ defineEmits(['click']);
   }
 
   &__text {
-    position: relative;
+    @extend %button-text;
   }
 }
 </style> 
