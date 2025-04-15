@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+- Criar um projeto em nuxtjs
+- Estruturação de pasta baseda na nova arquitetura
+- Criar e configurar estrutura de pasta dentro de /src
+- Utilizar typescript
+- Projeto sempre responsivo
