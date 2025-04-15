@@ -1,4 +1,4 @@
-import { ref, watch, onMounted, computed } from 'vue'
+import { ref, watch, onMounted, computed, onUnmounted } from 'vue'
 import type { Theme } from '../types'
 
 export function useTheme() {
@@ -33,12 +33,13 @@ export function useTheme() {
     if (typeof document !== 'undefined') {
       const html = document.documentElement
       
+      // Remova todas as classes de tema primeiro
+      html.classList.remove('dark-theme', 'light-theme')
+      
       if (effectiveTheme.value === 'dark') {
         html.classList.add('dark-theme')
-        html.classList.remove('light-theme')
       } else {
         html.classList.add('light-theme')
-        html.classList.remove('dark-theme')
       }
     }
   }
@@ -46,7 +47,28 @@ export function useTheme() {
   // Watch for changes in system theme
   const setupSystemThemeListener = () => {
     if (typeof window !== 'undefined') {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme)
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      // Verificar se o browser suporta addListener (alguns browsers antigos)
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', detectSystemTheme);
+      } else if (mediaQuery.addListener) {
+        // Fallback para browsers mais antigos
+        mediaQuery.addListener(detectSystemTheme);
+      }
+    }
+  }
+  
+  // Cleanup function
+  const cleanupListeners = () => {
+    if (typeof window !== 'undefined') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', detectSystemTheme);
+      } else if (mediaQuery.removeListener) {
+        mediaQuery.removeListener(detectSystemTheme);
+      }
     }
   }
   
@@ -63,6 +85,14 @@ export function useTheme() {
     
     // Setup listener for system theme changes
     setupSystemThemeListener()
+    
+    // Update document theme immediately
+    updateDocumentTheme()
+  })
+  
+  // Cleanup on unmount
+  onUnmounted(() => {
+    cleanupListeners();
   })
   
   // Update document when theme changes

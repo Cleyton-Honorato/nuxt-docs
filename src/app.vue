@@ -7,7 +7,10 @@
 </template>
 
 <script setup lang="ts">
-// App root component
+import { useTheme } from '~/composables/useTheme';
+
+// Inicializar o tema ao carregar a aplicação
+const { theme, effectiveTheme, setTheme } = useTheme();
 </script>
 
 <style>

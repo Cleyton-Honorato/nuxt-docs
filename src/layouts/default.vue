@@ -4,11 +4,14 @@
       <div class="container">
         <div class="header-content">
           <h1 class="logo">Nuxt Docs</h1>
-          <nav class="nav">
-            <NuxtLink to="/" class="nav-link">Início</NuxtLink>
-            <NuxtLink to="/about" class="nav-link">Sobre</NuxtLink>
-            <NuxtLink to="/design-system" class="nav-link">Sistema de Design</NuxtLink>
-          </nav>
+          <div class="header-right">
+            <nav class="nav">
+              <NuxtLink to="/" class="nav-link">Início</NuxtLink>
+              <NuxtLink to="/about" class="nav-link">Sobre</NuxtLink>
+              <NuxtLink to="/design-system" class="nav-link">Sistema de Design</NuxtLink>
+            </nav>
+            <ThemeToggle class="theme-toggle" />
+          </div>
         </div>
       </div>
     </header>
@@ -24,7 +27,7 @@
         <p>&copy; {{ new Date().getFullYear() }} Nuxt Docs</p>
         <p class="developer">
           Desenvolvido por 
-          <a href="https://github.com/Cleyton-Honorato" target="_blank" class="developer-link">
+          <a href="https://github.com/Cleyton-Honorato" target="_blank" rel="noopener noreferrer" class="developer-link">
             <span class="developer-name">Cleyton Honorato Lima</span>
           </a>
         </p>
@@ -34,6 +37,7 @@
 </template>
 
 <script setup lang="ts">
+import ThemeToggle from '~/components/app/shared/ThemeToggle.vue';
 // Lógica de configuração do layout pode ser colocada aqui
 </script>
 
@@ -110,6 +114,16 @@
   text-decoration: underline;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.theme-toggle {
+  margin-left: 0.5rem;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .header-content {
@@ -118,8 +132,13 @@
     align-items: flex-start;
   }
 
-  .nav {
+  .header-right {
     width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav {
+    width: auto;
     justify-content: flex-start;
   }
 }

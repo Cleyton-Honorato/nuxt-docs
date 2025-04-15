@@ -7,16 +7,28 @@ export default defineNuxtConfig({
     strict: true
   },
   css: [
-    '~/assets/css/main.css'
+    '~/styles/main.scss'
   ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+        },
+      },
+    },
+  },
   app: {
     head: {
-      viewport: 'width=device-width, initial-scale=1',
-      title: 'Nuxt Project',
       meta: [
-        { charset: 'utf-8' },
-        { name: 'description', content: 'Nuxt Project with TypeScript' }
-      ]
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' },
+        { rel: 'stylesheet', href: 'https://fonts.cdnfonts.com/css/felix-titling' },
+        { rel: 'stylesheet', href: 'https://fonts.cdnfonts.com/css/calibri' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&display=swap' }
+      ],
     }
   }
 })

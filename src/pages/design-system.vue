@@ -1,8 +1,8 @@
 <template>
   <div class="design-system-page">
-    <h1 class="ds-title">Sistema de Design</h1>
+    <h1 class="design-system-title">Sistema de Design</h1>
     
-    <section class="ds-section">
+    <section class="design-system-section">
       <h2 class="section-title">Cores</h2>
       <div class="color-palette">
         <div class="color-item">
@@ -39,7 +39,7 @@
       </div>
     </section>
     
-    <section class="ds-section">
+    <section class="design-system-section">
       <h2 class="section-title">Tipografia</h2>
       <div class="typography-examples">
         <div class="type-item">
@@ -57,49 +57,36 @@
         <div class="type-item">
           <p class="body-text">Texto de Corpo</p>
           <code>font-size: 1rem</code>
+          <p class="font-description">Fonte Felix Titling: elegante e clássica, ideal para destaque de conteúdo</p>
         </div>
         <div class="type-item">
           <p class="small-text">Texto Pequeno</p>
           <code>font-size: 0.875rem</code>
+          <p class="font-description">Fonte Calibri: moderna e legível, perfeita para textos pequenos e interfaces</p>
+        </div>
+        <div class="type-item">
+          <p class="button-text">Texto de Botões</p>
+          <code>font-family: Cormorant; font-weight: 600; font-size: 16px;</code>
+          <p class="font-description">Fonte Cormorant: elegante e sofisticada, ideal para elementos de destaque como botões</p>
         </div>
       </div>
     </section>
     
-    <section class="ds-section">
-      <h2 class="section-title">Botões</h2>
-      <div class="button-showcase">
+    <section class="design-system-section">
+      <h2 class="section-title">Botões Elegantes</h2>
+      <div class="design-system-content">
+        <p class="component-description">Botões são componentes interativos utilizados para ações dentro da aplicação.</p>
+        
         <div class="button-group">
-          <h3 class="component-subtitle">Variantes</h3>
+          <h3 class="component-subtitle">Botão Vintage</h3>
           <div class="button-row">
             <div>
-              <AppButton>Primário</AppButton>
+              <PrimaryButton>Botão Vintage</PrimaryButton>
               <p>Primário</p>
             </div>
             <div>
-              <AppButton variant="secondary">Secundário</AppButton>
+              <SecondaryButton>Botão Vintage</SecondaryButton>
               <p>Secundário</p>
-            </div>
-            <div>
-              <AppButton variant="outline">Contorno</AppButton>
-              <p>Contorno</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="button-group">
-          <h3 class="component-subtitle">Tamanhos</h3>
-          <div class="button-row">
-            <div>
-              <AppButton size="small">Pequeno</AppButton>
-              <p>Pequeno</p>
-            </div>
-            <div>
-              <AppButton size="medium">Médio</AppButton>
-              <p>Médio</p>
-            </div>
-            <div>
-              <AppButton size="large">Grande</AppButton>
-              <p>Grande</p>
             </div>
           </div>
         </div>
@@ -108,15 +95,33 @@
           <h3 class="component-subtitle">Estados</h3>
           <div class="button-row">
             <div>
-              <AppButton>Normal</AppButton>
+              <PrimaryButton>Normal</PrimaryButton>
               <p>Normal</p>
             </div>
             <div>
-              <AppButton disabled>Desativado</AppButton>
+              <PrimaryButton disabled>Desativado</PrimaryButton>
               <p>Desativado</p>
             </div>
             <div>
-              <AppButton block>Bloco</AppButton>
+              <PrimaryButton block>Bloco</PrimaryButton>
+              <p>Bloco</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="button-group">
+          <h3 class="component-subtitle">Estados - Botão Secundário</h3>
+          <div class="button-row">
+            <div>
+              <SecondaryButton>Normal</SecondaryButton>
+              <p>Normal</p>
+            </div>
+            <div>
+              <SecondaryButton disabled>Desativado</SecondaryButton>
+              <p>Desativado</p>
+            </div>
+            <div>
+              <SecondaryButton block>Bloco</SecondaryButton>
               <p>Bloco</p>
             </div>
           </div>
@@ -124,7 +129,7 @@
       </div>
     </section>
     
-    <section class="ds-section">
+    <section class="design-system-section">
       <h2 class="section-title">Contêineres Responsivos</h2>
       <div class="responsive-demo">
         <div class="container container-demo">
@@ -137,9 +142,13 @@
 </template>
 
 <script setup lang="ts">
+import PrimaryButton from '~/components/app/shared/buttons/PrimaryButton.vue';
+import SecondaryButton from '~/components/app/shared/buttons/SecondaryButton.vue';
+
+// Definir o layout para esta página
 definePageMeta({
   layout: 'default'
-})
+});
 </script>
 
 <style scoped>
@@ -148,14 +157,14 @@ definePageMeta({
   margin: 0 auto;
 }
 
-.ds-title {
+.design-system-title {
   font-size: 2.2rem;
   color: var(--primary-color);
   margin-bottom: 2rem;
 }
 
-.ds-section {
-  background-color: #f9f9f9;
+.design-system-section {
+  background-color: #1a1a1a;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -166,12 +175,22 @@ definePageMeta({
   font-size: 1.5rem;
   color: var(--primary-color);
   margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(0, 220, 130, 0.3);
 }
 
 .component-subtitle {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: var(--secondary-color);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.component-description {
+  font-size: 0.875rem;
+  color: #e0e0e0;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
 }
 
 /* Colors */
@@ -215,12 +234,17 @@ definePageMeta({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #333;
   padding-bottom: 1rem;
 }
 
+.type-item h1, .type-item h2, .type-item h3 {
+  color: #FFF7DF;
+}
+
 .type-item code {
-  background: #eee;
+  background: #333;
+  color: var(--primary-color);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-size: 0.875rem;
@@ -228,10 +252,30 @@ definePageMeta({
 
 .body-text {
   font-size: 1rem;
+  font-family: 'Felix Titling', serif;
+  color: #FFF7DF;
+}
+
+.font-description {
+  font-size: 0.75rem;
+  color: #E3D4B7;
+  font-style: italic;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+  max-width: 350px;
 }
 
 .small-text {
   font-size: 0.875rem;
+  font-family: 'Calibri', sans-serif;
+  color: #FFF7DF;
+}
+
+.button-text {
+  font-size: 16px;
+  font-family: 'Cormorant', serif;
+  font-weight: 600;
+  color: #FFF7DF;
 }
 
 /* Buttons */
@@ -243,6 +287,10 @@ definePageMeta({
 
 .button-group {
   margin-bottom: 1rem;
+  padding: 1.5rem;
+  background-color: #0e0e0e;
+  border-radius: 6px;
+  border: 1px solid #2d2d2d;
 }
 
 .button-row {
@@ -260,7 +308,9 @@ definePageMeta({
 
 .button-row p {
   font-size: 0.875rem;
-  color: var(--secondary-color);
+  color: #c0c0c0;
+  margin-top: 0.5rem;
+  font-weight: 500;
 }
 
 /* Responsive Container Demo */
@@ -293,11 +343,11 @@ definePageMeta({
     width: 100%;
   }
   
-  .ds-section {
+  .design-system-section {
     padding: 1.5rem;
   }
   
-  .ds-title {
+  .design-system-title {
     font-size: 1.8rem;
   }
 }
@@ -313,8 +363,12 @@ definePageMeta({
     gap: 0.5rem;
   }
   
-  .ds-title {
+  .design-system-title {
     font-size: 1.5rem;
   }
+}
+
+.design-system-content {
+  padding: 0.5rem;
 }
 </style> 
