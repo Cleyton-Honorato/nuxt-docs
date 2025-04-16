@@ -138,12 +138,42 @@
       </div>
       <p class="demo-instruction">Redimensione seu navegador para ver como este contêiner se adapta a diferentes tamanhos de tela.</p>
     </section>
+
+    <section class="design-system-section">
+      <h2 class="section-title">Separadores de Sessão</h2>
+      <div class="design-system-content">
+        <p class="component-description">Separadores são elementos visuais que ajudam a organizar o conteúdo e melhorar a legibilidade, criando hierarquia visual na interface.</p>
+        
+        <div class="separator-showcase">
+          <div class="separator-group">
+            <h3 class="component-subtitle">Separador Simples com Elipses</h3>
+            <SimpleSeparator />
+            <p class="separator-description">Linha única para separação com elipses decorativas em ambos os lados</p>
+          </div>
+          
+          <div class="separator-group">
+            <h3 class="component-subtitle">Separador Composto</h3>
+            <DoubleSeparator />
+            <p class="separator-description">Separador com elementos decorativos de setas e símbolo de infinito</p>
+          </div>
+          
+          <div class="separator-group">
+            <h3 class="component-subtitle">Separador com Seta</h3>
+            <ArrowSeparator />
+            <p class="separator-description">Linha simples com seta direcional à direita, ideal para indicar continuidade</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import PrimaryButton from '~/components/app/shared/buttons/PrimaryButton.vue';
 import SecondaryButton from '~/components/app/shared/buttons/SecondaryButton.vue';
+import SimpleSeparator from '~/components/app/shared/separators/Separator.vue';
+import DoubleSeparator from '~/components/app/shared/separators/CompoundSeparator.vue';
+import ArrowSeparator from '~/components/app/shared/separators/ArrowSeparator.vue';
 
 // Definir o layout para esta página
 definePageMeta({
@@ -191,6 +221,17 @@ definePageMeta({
   color: #e0e0e0;
   margin-bottom: 1.5rem;
   line-height: 1.5;
+}
+
+.component-variant {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: #e0e0e0;
+  font-weight: 500;
+}
+
+.mt-5 {
+  margin-top: 2.5rem;
 }
 
 /* Colors */
@@ -328,6 +369,30 @@ definePageMeta({
   font-style: italic;
 }
 
+/* Separadores */
+.separator-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.separator-group {
+  background-color: #0e0e0e;
+  border-radius: 6px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.separator-description {
+  font-size: 0.875rem;
+  color: #c0c0c0;
+  margin-top: 1rem;
+  text-align: center;
+  max-width: 400px;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .color-palette {
@@ -349,6 +414,10 @@ definePageMeta({
   
   .design-system-title {
     font-size: 1.8rem;
+  }
+  
+  .separator-group {
+    padding: 1rem;
   }
 }
 

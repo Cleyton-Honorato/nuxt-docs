@@ -1,0 +1,5 @@
+<svg width="28" height="8" viewBox="0 0 28 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.7773 1C21.9975 1 20.125 1.6 17 4C20.125 6.4 21.9975 7 23.7773 7C25.5572 7 27 5.65685 27 4C27 2.34315 25.5572 1 23.7773 1Z" fill="black" stroke="#FFC900"/>
+<path d="M4.22266 1C6.00248 1 7.875 1.6 11 4C7.875 6.4 6.00248 7 4.22266 7C2.44283 7 1 5.65685 1 4C1 2.34315 2.44283 1 4.22266 1Z" fill="black" stroke="#FFC900"/>
+<circle cx="14" cy="4" r="2" transform="rotate(-90 14 4)" stroke="#FFC900"/>
+</svg>

@@ -1,5 +1,6 @@
 // Usando o moderno @use em vez de @import
 @use 'variables' as vars;
+@use 'separators' as seps;
 
 :root {
   /* Light Theme (default) */

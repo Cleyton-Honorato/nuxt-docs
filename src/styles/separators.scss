@@ -1,0 +1,111 @@
+// Variáveis para separadores
+$separator-color: #FFC900;
+$separator-height-default: 2px;
+$separator-height-simple: 4px;
+$separator-height-responsive: 1.5px;
+$separator-icon-size: 20px;
+$separator-icon-size-medium: 18px;
+$separator-icon-size-small: 16px;
+$separator-icon-size-xsmall: 14px;
+$separator-padding-medium: 40px;
+$separator-padding-small: 30px;
+$separator-width: 90%;
+$separator-margin: 1.5rem;
+
+// Estilos comuns para separadores (usando placeholders)
+
+// Base para todos os separadores
+%separator-container {
+  position: relative;
+  width: $separator-width;
+  margin: $separator-margin auto;
+  display: flex;
+  align-items: center;
+}
+
+// Linha horizontal do separador
+%separator-line {
+  width: 100%;
+  height: $separator-height-default;
+  background-color: $separator-color;
+}
+
+// Linha de separador simples (mais grossa)
+%separator-line-simple {
+  @extend %separator-line;
+  height: $separator-height-simple;
+}
+
+// Posicionamento de ícones no separador
+%separator-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: $separator-icon-size;
+  transition: all 0.3s ease;
+}
+
+// Classes para posicionamento de ícones
+.separator-icon {
+  @extend %separator-icon;
+  
+  &--right {
+    right: -35px;
+  }
+  
+  &--left {
+    left: -35px;
+  }
+  
+  &--center {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  &--close-right {
+    right: -10px;
+  }
+  
+  &--close-left {
+    left: -10px;
+  }
+}
+
+// Linha base para separadores
+.separator-line {
+  @extend %separator-line;
+}
+
+// Container base para separadores
+.separator-container {
+  @extend %separator-container;
+}
+
+// Responsividade compartilhada
+@media (max-width: 768px) {
+  .separator-container,
+  .simple-separator-container,
+  .arrow-separator-container {
+    padding: 0 $separator-padding-medium;
+  }
+  
+  .separator-icon {
+    height: $separator-icon-size-medium;
+  }
+}
+
+@media (max-width: 480px) {
+  .separator-container,
+  .simple-separator-container,
+  .arrow-separator-container {
+    padding: 0 $separator-padding-small;
+  }
+  
+  .separator-line {
+    height: $separator-height-responsive;
+  }
+  
+  .separator-icon {
+    height: $separator-icon-size-small;
+  }
+} 
