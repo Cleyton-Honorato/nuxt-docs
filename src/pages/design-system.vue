@@ -162,6 +162,14 @@
             <ArrowSeparator />
             <p class="separator-description">Linha simples com seta direcional à direita, ideal para indicar continuidade</p>
           </div>
+
+          <div class="separator-group">
+            <h3 class="component-subtitle">Separador com Seta</h3>
+            <DecorativeLine>
+              <span>tst</span>
+            </DecorativeLine>
+            <p class="separator-description">Linha simples com seta direcional à direita, ideal para indicar continuidade</p>
+          </div>
         </div>
       </div>
     </section>
@@ -253,6 +261,7 @@ import SecondaryButton from '@/components/app/shared/buttons/SecondaryButton.vue
 import SimpleSeparator from '@/components/app/shared/separators/Separator.vue';
 import DoubleSeparator from '@/components/app/shared/separators/CompoundSeparator.vue';
 import ArrowSeparator from '@/components/app/shared/separators/ArrowSeparator.vue';
+import DecorativeLine from '@/components/app/shared/separators/DecorativeLine.vue';
 import { 
   Select, 
   SelectContent, 
