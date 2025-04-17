@@ -165,6 +165,33 @@
         </div>
       </div>
     </section>
+    
+    <section class="design-system-section">
+      <h2 class="section-title">Selects</h2>
+      <div class="design-system-content">
+        <p class="component-description">Os componentes Select permitem que os usuários escolham uma opção de uma lista de itens.</p>
+        
+        <div class="select-showcase">
+          <h3 class="component-subtitle">Select Básico</h3>
+          <div class="select-demo">
+            <Select v-model="selectedFruit" class="">
+              <SelectTrigger class="!p-[18px]">
+                <SelectValue placeholder="Order by" />
+              </SelectTrigger>
+              <SelectContent class="bg-[#131616] border border-[#444] rounded-md shadow-lg !p-2">
+                <SelectGroup>
+                  <SelectItem class="text-white hover:bg-[#444] rounded !py-2 cursor-pointer" value="maisRelevantes">Mais relevantes</SelectItem>
+                  <SelectItem class="text-white hover:bg-[#444] rounded !py-2 cursor-pointer" value="menosRelevantes">Menos relevantes</SelectItem>
+                  <SelectItem class="text-white hover:bg-[#444] rounded !py-2 cursor-pointer" value="menorPreco">Menor preço</SelectItem>
+                  <SelectItem class="text-white hover:bg-[#444] rounded !py-2 cursor-pointer" value="maiorPreco">Maior preço</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            <p class="mt-4 text-gray-300">Selecionado: {{ selectedFruit || 'Nenhum item selecionado' }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -174,6 +201,18 @@ import SecondaryButton from '~/components/app/shared/buttons/SecondaryButton.vue
 import SimpleSeparator from '~/components/app/shared/separators/Separator.vue';
 import DoubleSeparator from '~/components/app/shared/separators/CompoundSeparator.vue';
 import ArrowSeparator from '~/components/app/shared/separators/ArrowSeparator.vue';
+import { 
+  Select, 
+  SelectContent, 
+  SelectGroup, 
+  SelectItem,
+  SelectTrigger, 
+  SelectValue 
+} from '~/components/ui/select';
+import { ref } from 'vue';
+
+// Estado para o select
+const selectedFruit = ref('');
 
 // Definir o layout para esta página
 definePageMeta({
@@ -439,5 +478,22 @@ definePageMeta({
 
 .design-system-content {
   padding: 0.5rem;
+}
+
+.select-showcase {
+  margin-top: 1.5rem;
+}
+
+.select-demo {
+  background-color: #292929;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.text-gray-300 {
+  color: #ccc;
+  margin-top: 1rem;
+  font-size: 14px;
 }
 </style> 
