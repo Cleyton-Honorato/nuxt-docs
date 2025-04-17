@@ -174,16 +174,17 @@
         <div class="select-showcase">
           <h3 class="component-subtitle">Select Básico</h3>
           <div class="select-demo">
-            <Select v-model="selectedFruit" class="">
-              <SelectTrigger class="!p-[18px]">
-                <SelectValue placeholder="Order by" />
+            <Select v-model="selectedFruit">
+              <SelectTrigger class="!p-[18px] w-[240px]">
+                <SelectValue placeholder="Selecione uma fruta" />
               </SelectTrigger>
-              <SelectContent class="bg-[#131616] border border-[#444] rounded-md shadow-lg !p-2">
+              <SelectContent class="bg-[#131616] border border-[#444] rounded-md shadow-lg !p-[18px]">
                 <SelectGroup>
-                  <SelectItem class="text-white hover:bg-[#444] rounded !py-2 cursor-pointer" value="maisRelevantes">Mais relevantes</SelectItem>
-                  <SelectItem class="text-white hover:bg-[#444] rounded !py-2 cursor-pointer" value="menosRelevantes">Menos relevantes</SelectItem>
-                  <SelectItem class="text-white hover:bg-[#444] rounded !py-2 cursor-pointer" value="menorPreco">Menor preço</SelectItem>
-                  <SelectItem class="text-white hover:bg-[#444] rounded !py-2 cursor-pointer" value="maiorPreco">Maior preço</SelectItem>
+                  <SelectLabel>Frutas</SelectLabel>
+                  <SelectItem value="maca">Maçã</SelectItem>
+                  <SelectItem value="banana">Banana</SelectItem>
+                  <SelectItem value="laranja">Laranja</SelectItem>
+                  <SelectItem value="morango">Morango</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -192,24 +193,89 @@
         </div>
       </div>
     </section>
+    
+    <section class="design-system-section">
+      <h2 class="section-title">Dropdowns</h2>
+      <div class="design-system-content">
+        <p class="component-description">Os componentes Dropdown exibem menus flutuantes que aparecem quando o usuário interage com um botão ou outro controle.</p>
+        
+        <div class="dropdown-showcase">
+          <h3 class="component-subtitle">Dropdown Menu</h3>
+          <div class="dropdown-demo">
+            <DropdownMenu>
+              <DropdownMenuTrigger class="!p-[18px] text-white rounded-md font-felix-titling border-none bg-transparent shadow-none">
+                Menu de Opções <ChevronDown class="ml-2 size-4 opacity-50 inline" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent class="bg-[#131616] rounded-md min-w-[220px] border-none shadow-none">
+                <DropdownMenuLabel class="text-gray-400 !px-[18px] !py-[10px] font-felix-titling">Minha Conta</DropdownMenuLabel>
+                <DropdownMenuSeparator class="bg-[#333]" />
+                <DropdownMenuItem class="text-white hover:bg-[#444] !px-[18px] !py-[19px] cursor-pointer font-felix-titling">
+                  Perfil
+                </DropdownMenuItem>
+                <DropdownMenuItem class="text-white hover:bg-[#444] !px-[18px] !py-[19px] cursor-pointer font-felix-titling">
+                  Configurações
+                </DropdownMenuItem>
+                <DropdownMenuSeparator class="bg-[#333]" />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem class="text-white hover:bg-[#444] !px-[18px] !py-[19px] cursor-pointer font-felix-titling">
+                    Novo Projeto
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger class="text-white hover:bg-[#444] !px-[18px] !py-[19px] cursor-pointer font-felix-titling">
+                      Mais Opções
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuSubContent class="bg-[#131616] rounded-md min-w-[180px] border-none shadow-none">
+                      <DropdownMenuItem class="text-white hover:bg-[#444] !px-[18px] !py-[19px] cursor-pointer font-felix-titling">
+                        Opção 1
+                      </DropdownMenuItem>
+                      <DropdownMenuItem class="text-white hover:bg-[#444] !px-[18px] !py-[19px] cursor-pointer font-felix-titling">
+                        Opção 2
+                      </DropdownMenuItem>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator class="bg-[#333]" />
+                <DropdownMenuItem class="text-red-400 hover:bg-[#444] !px-[18px] !py-[19px] cursor-pointer font-felix-titling">
+                  Sair
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import PrimaryButton from '~/components/app/shared/buttons/PrimaryButton.vue';
-import SecondaryButton from '~/components/app/shared/buttons/SecondaryButton.vue';
-import SimpleSeparator from '~/components/app/shared/separators/Separator.vue';
-import DoubleSeparator from '~/components/app/shared/separators/CompoundSeparator.vue';
-import ArrowSeparator from '~/components/app/shared/separators/ArrowSeparator.vue';
+import PrimaryButton from '@/components/app/shared/buttons/PrimaryButton.vue';
+import SecondaryButton from '@/components/app/shared/buttons/SecondaryButton.vue';
+import SimpleSeparator from '@/components/app/shared/separators/Separator.vue';
+import DoubleSeparator from '@/components/app/shared/separators/CompoundSeparator.vue';
+import ArrowSeparator from '@/components/app/shared/separators/ArrowSeparator.vue';
 import { 
   Select, 
   SelectContent, 
   SelectGroup, 
   SelectItem,
   SelectTrigger, 
-  SelectValue 
-} from '~/components/ui/select';
+  SelectValue,
+  SelectLabel
+} from '@/components/ui/select';
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuGroup,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent
+} from '@/components/ui/dropdown-menu';
 import { ref } from 'vue';
+import { ChevronDown } from 'lucide-vue-next';
 
 // Estado para o select
 const selectedFruit = ref('');
@@ -495,5 +561,60 @@ definePageMeta({
   color: #ccc;
   margin-top: 1rem;
   font-size: 14px;
+}
+
+.dropdown-showcase {
+  margin-top: 1.5rem;
+}
+
+.dropdown-demo {
+  background-color: #292929;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.text-red-400 {
+  color: #f87171;
+}
+
+.min-w-\[220px\] {
+  min-width: 220px;
+}
+
+.min-w-\[180px\] {
+  min-width: 180px;
+}
+
+.font-felix-titling {
+  font-family: 'Felix Titling', Times, serif;
+  letter-spacing: 0.03em;
+}
+
+.border-none {
+  border: none !important;
+}
+
+.size-4 {
+  width: 1rem;
+  height: 1rem;
+}
+
+.inline {
+  display: inline;
+}
+
+.shadow-none {
+  box-shadow: none !important;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+  color: #ccc;
+  font-family: 'Calibri', sans-serif;
 }
 </style> 
